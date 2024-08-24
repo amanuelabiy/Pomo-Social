@@ -9,7 +9,7 @@ const initialState: InitialStateTypes = {
 };
 
 export const globalSlice = createSlice({
-  name: "global",
+  name: "theme",
   initialState,
   reducers: {
     setIsDarkMode: (state, action: PayloadAction<boolean>) => {
