@@ -47,24 +47,26 @@ function Navbar() {
       <div
         className={`${
           theme === "light" ? "hover:bg-gray-200" : "hover:bg-gray-500"
-        } p-3 rounded-xl`}
+        } p-3 rounded-xl hover:cursor-pointer`}
         onClick={handleClockClick}
       >
         <motion.div animate={controls}>
           <FaClock className="text-primary text-2xl" />
         </motion.div>
       </div>
+      <Link href="/">
+        <div
+          className={`${
+            theme === "light" ? "hover:bg-gray-200" : "hover:bg-gray-500"
+          } p-3 rounded-xl hover:cursor-pointer active:scale-95`}
+        >
+          <h1 className="text-xl font-extrabold">Pomo Social</h1>
+        </div>
+      </Link>
       <div
         className={`${
           theme === "light" ? "hover:bg-gray-200" : "hover:bg-gray-500"
-        } p-3 rounded-xl`}
-      >
-        <h1 className="text-xl font-extrabold">Pomo Social</h1>
-      </div>
-      <div
-        className={`${
-          theme === "light" ? "hover:bg-gray-200" : "hover:bg-gray-500"
-        } p-3 rounded-xl`}
+        } p-3 rounded-xl hover:cursor-pointer active:scale-95`}
         onClick={handleThemeClick}
       >
         {theme === "light" ? (
