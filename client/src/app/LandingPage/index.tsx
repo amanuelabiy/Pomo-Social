@@ -8,7 +8,7 @@ function LandingPage() {
       <div className="flex justify-center mt-[1rem]">
         <Navbar />
       </div>
-      <div className="flex flex-col mt-[3rem] mx-auto w-[65%]">
+      <div className="flex flex-col mt-[3rem] mx-auto w-[85%] lg:w-[65%]">
         <Hero />
       </div>
     </div>
