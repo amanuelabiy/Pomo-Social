@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import StoreProvider from "./redux";
+import Providers from "@/components/ProgressBarProvider";
 
 const inter = Poppins({ subsets: ["latin"], weight: ["100", "400", "700"] });
 
@@ -26,7 +27,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <Providers>{children}</Providers>
           </ThemeProvider>
         </StoreProvider>
       </body>

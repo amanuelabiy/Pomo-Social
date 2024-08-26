@@ -6,6 +6,7 @@ import { TypeAnimation } from "react-type-animation";
 
 import Rating from "@mui/material/Rating";
 import PomoTimer from "./pomotimer";
+import Link from "next/link";
 
 function Hero() {
   return (
@@ -35,9 +36,11 @@ function Hero() {
         </div>
 
         <div className="flex gap-4 mx-auto mt-9 lg:mx-0">
-          <Button className="w-[8rem] p-6 font-extrabold transition-transform transform hover:scale-105 active:scale-95 shadow-lg">
-            Let's Focus
-          </Button>
+          <Link href="/login">
+            <Button className="w-[8rem] p-6 font-extrabold transition-transform transform hover:scale-105 active:scale-95 shadow-lg">
+              Let's Focus
+            </Button>
+          </Link>
           <Button className="w-[8rem] p-[1.25rem] font-extrabold border-primary border-4 bg-white text-black hover:bg-gray-400 transition-transform transform hover:scale-105 active:scale-95 shadow-lg">
             Features
           </Button>
