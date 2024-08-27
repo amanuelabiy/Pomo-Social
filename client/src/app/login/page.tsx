@@ -1,3 +1,5 @@
+"use client";
+
 import Navbar from "@/components/Landing/Navbar";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -5,8 +7,16 @@ import { FcGoogle } from "react-icons/fc";
 import { FaApple } from "react-icons/fa";
 import { FaFacebookSquare } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { FaArrowRight } from "react-icons/fa6";
+// Import signIn from next-auth/react
+
+import { Label } from "@/components/ui/label";
 
 function Login() {
+  const [showEmailForm, setShowEmailForm] = useState<boolean>(false);
+
   return (
     <div>
       <div className="flex justify-center mt-[1rem]">
@@ -42,10 +52,36 @@ function Login() {
             <p className="text-gray-500 mx-3 font-bold">OR</p>
             <hr className="border-gray-500 flex-grow" />
           </div>
-          <Button className="font-semibold text-md p-7 transition-transform transform hover:scale-[1.02] active:scale-[.98]">
-            <MdEmail className="mr-4 text-2xl" />
-            SIGN UP WITH EMAIL
-          </Button>
+
+          {showEmailForm ? (
+            <form className="flex flex-col gap-3">
+              <Input className="p-7" placeholder="Username" required></Input>
+              <Input
+                type="email"
+                className="p-7"
+                placeholder="Email"
+                required
+              ></Input>
+              <Input
+                type="password"
+                className="p-7"
+                placeholder="Password"
+                required
+              ></Input>
+              <Button className="font-semibold text-md p-7 transition-transform transform hover:scale-[1.02] active:scale-[.98]">
+                <p className="mr-2">SIGN UP</p>
+                <FaArrowRight className="text-xl" />
+              </Button>
+            </form>
+          ) : (
+            <Button
+              className="font-semibold text-md p-7 transition-transform transform hover:scale-[1.02] active:scale-[.98]"
+              onClick={() => setShowEmailForm(true)}
+            >
+              <MdEmail className="mr-4 text-2xl" />
+              SIGN UP WITH EMAIL
+            </Button>
+          )}
         </Card>
       </div>
     </div>
@@ -53,14 +89,3 @@ function Login() {
 }
 
 export default Login;
-
-{
-  /* <div>
-      <div className="flex justify-center mt-[1rem]">
-        <Navbar />
-      </div>
-      <div className="flex flex-col mt-[3rem] mx-auto w-[85%] lg:w-[65%]">
-        <Hero />
-      </div>
-    </div> */
-}
