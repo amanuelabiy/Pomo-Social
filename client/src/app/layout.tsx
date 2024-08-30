@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import StoreProvider from "./redux";
 import Providers from "@/components/ProgressBarProvider";
+import SessionWrapper from "@/components/SessionWrapper";
 
 const inter = Poppins({ subsets: ["latin"], weight: ["100", "400", "700"] });
 
@@ -20,16 +21,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <StoreProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Providers>{children}</Providers>
-          </ThemeProvider>
-        </StoreProvider>
+        <SessionWrapper>
+          <StoreProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <Providers>{children}</Providers>
+            </ThemeProvider>
+          </StoreProvider>
+        </SessionWrapper>
       </body>
     </html>
   );
