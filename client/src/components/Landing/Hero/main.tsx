@@ -3,7 +3,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { TypeAnimation } from "react-type-animation";
-
 import Rating from "@mui/material/Rating";
 import PomoTimer from "./pomotimer";
 import Link from "next/link";
