@@ -70,7 +70,7 @@ function Login() {
       </form>
       <h1 className="text-center mt-7">
         <span className="font-extrabold text-gray-500">
-          Don't have an account?
+          Don&apos;t have an account?
         </span>{" "}
         <Link href="/signup">
           <span className="text-decoration-line: underline text-gray-500">

@@ -10,7 +10,8 @@ import { MdEmail } from "react-icons/md";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { FaArrowRight } from "react-icons/fa6";
-// Import signIn from next-auth/react
+import { signIn } from "next-auth/react";
+
 
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
@@ -36,7 +37,10 @@ function Login() {
 
       <div className="flex justify-center">
         <Card className="flex flex-col gap-5 p-4 rounded-3xl w-[35rem] shadow-lg border-none text-center mt-5">
-          <Button className="bg-white text-black font-semibold text-md p-7 hover:bg-gray-100 transition-transform transform hover:scale-[1.02] active:scale-[.98] border-[1px] border-gray-500">
+          <Button
+            className="bg-white text-black font-semibold text-md p-7 hover:bg-gray-100 transition-transform transform hover:scale-[1.02] active:scale-[.98] border-[1px] border-gray-500"
+            onClick={() => signIn()}
+          >
             <FcGoogle className="mr-4 text-2xl" />
             SIGN UP WITH GOOGLE
           </Button>

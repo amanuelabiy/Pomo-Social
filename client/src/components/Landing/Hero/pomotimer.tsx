@@ -51,6 +51,7 @@ function PomoTimer() {
   };
 
   const resetTimer = () => {
+    document.title = "Pomo-Social";
     setIsTimerRunning(false);
     startTime.current = setTimerAmount(25);
     setTimeLeft(setTimerAmount(25));
@@ -61,6 +62,12 @@ function PomoTimer() {
 
     let minutes = Math.floor(timeInSeconds / 60);
     let seconds = Math.floor(timeInSeconds % 60);
+
+    if (timerIsRunning) {
+      document.title = `${
+        minutes < 10 ? minutes.toString().padStart(2, "0") : minutes
+      }:${seconds < 10 ? seconds.toString().padStart(2, "0") : seconds}`;
+    }
 
     return `${minutes < 10 ? minutes.toString().padStart(2, "0") : minutes}:${
       seconds < 10 ? seconds.toString().padStart(2, "0") : seconds

@@ -37,7 +37,7 @@ function Hero() {
         <div className="flex gap-4 mx-auto mt-9 lg:mx-0">
           <Link href="/signup">
             <Button className="w-[8rem] p-6 font-extrabold transition-transform transform hover:scale-105 active:scale-95 shadow-lg">
-              Let's Focus
+              Let&apos;s Focus
             </Button>
           </Link>
           <Button className="w-[8rem] p-[1.25rem] font-extrabold border-primary border-4 bg-white text-black hover:bg-gray-400 transition-transform transform hover:scale-105 active:scale-95 shadow-lg">

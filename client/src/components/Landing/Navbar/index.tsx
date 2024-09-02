@@ -7,6 +7,8 @@ import { useTheme } from "next-themes";
 import { Card } from "@/components/ui/card";
 import Link from "next/link";
 import { motion, useAnimation } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 function Navbar() {
   const { theme, setTheme } = useTheme();
@@ -42,8 +44,18 @@ function Navbar() {
     scale: [0.8, 1],
     transition: { duration: 0.3 },
   };
+
+  const session = useSession();
+
+  console.log("session is", session);
   return (
     <Card className="flex gap-5 p-4 rounded-3xl w-[35rem] justify-between shadow-lg border-none">
+      {session.data?.user ? (
+        <Button onClick={() => signOut()}>Log out</Button>
+      ) : (
+        <Button onClick={() => signIn()}>Sign In</Button>
+      )}
+
       <div
         className={`${
           theme === "light" ? "hover:bg-gray-200" : "hover:bg-gray-500"

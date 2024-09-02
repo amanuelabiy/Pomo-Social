@@ -1,0 +1,86 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String          @id @unique @default(uuid())
+  email          String
+  provider       Provider
+  sessionHistory SessionHistory?
+  habits         Habit[]
+  friends        User[]          @relation("UserFriends")
+  createdAt      DateTime
+  updatedAt      DateTime
+  userId         String?
+  User           User?           @relation("UserFriends", fields: [userId], references: [id])
+
+  @@map("users")
+}
+
+model Habit {
+  id        String   @id @default(uuid())
+  userId    String
+  name      String
+  streak    Int
+  createdAt DateTime
+  updatedAt DateTime
+  User      User     @relation(fields: [userId], references: [id])
+
+  @@map("habits")
+}
+
+model SessionHistory {
+  id        String    @id @default(uuid())
+  userId    String    @unique
+  history   Session[]
+  createdAt DateTime
+  updatedAt DateTime
+
+  User User @relation(fields: [userId], references: [id])
+
+  @@map("sessionhistories")
+}
+
+model Session {
+  id                   String         @id @default(uuid())
+  userId               String
+  sessionHistoryId     String
+  name                 String
+  lengthInMilliseconds BigInt
+  completedToDos       ToDo[]
+  createdAt            DateTime
+  updatedAt            DateTime
+  SessionHistory       SessionHistory @relation(fields: [sessionHistoryId], references: [id])
+
+  @@map("sessions")
+}
+
+model ToDo {
+  id        String   @id @default(uuid())
+  userId    String
+  sessionId String
+  task      String
+  completed Boolean
+  createdAt DateTime
+  updatedAt DateTime
+  Session   Session  @relation(fields: [sessionId], references: [id])
+
+  @@map("toDos")
+}
+
+enum Provider {
+  Google
+  Apple
+  Facebook
+}

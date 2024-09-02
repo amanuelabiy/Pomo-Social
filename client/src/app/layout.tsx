@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
-import StoreProvider from "./redux";
-import Providers from "@/components/ProgressBarProvider";
+import Providers from "./providers";
 
 const inter = Poppins({ subsets: ["latin"], weight: ["100", "400", "700"] });
 
@@ -20,16 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <StoreProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Providers>{children}</Providers>
-          </ThemeProvider>
-        </StoreProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
