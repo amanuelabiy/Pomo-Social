@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
+import rootRouter from "./routes";
 /*ROUTE IMPORTS */
 
 /*CONFIGURATIONS */
@@ -18,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 /*ROUTES */
+app.use("/api", rootRouter);
 
 /* SERVER */
 
